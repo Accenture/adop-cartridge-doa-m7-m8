@@ -59,11 +59,7 @@ echo "SSH onto host and unzip war file into webapps folder..."
 ssh -tt -i ${PEM_FILE} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no centos@$TOMCAT_IP "      
       sudo docker stop tomcat8
       sudo rm -rf /data/tomcat/webapps/petclinic
-      for i in $(cd ~/temp; find . -name *.war)
-      do
-        sudo unzip ~/temp/${i} -d /data/tomcat/webapps/petclinic >/dev/null
-      done
-      
+      sudo unzip ~/temp/petclinic.war -d /data/tomcat/webapps/petclinic >/dev/null
       sudo docker start tomcat8
 "      
 
