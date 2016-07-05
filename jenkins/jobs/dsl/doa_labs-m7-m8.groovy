@@ -94,7 +94,7 @@ triggerAlarm.with {
     steps {
         shell('''set +x
             |echo "Spiking CPU usage for 5 minutes..."
-            |ssh -i ${PEM_FILE} root@$TOMCAT_IP -o StrictHostKeyChecking=no "fulload() { dd if=/dev/zero of=/dev/null & }; fulload; sleep 310; pkill dd;"
+            |ssh -i ${PEM_FILE} centos@$TOMCAT_IP -o StrictHostKeyChecking=no "fulload() { dd if=/dev/zero of=/dev/null & }; fulload; sleep 310; pkill dd;"
             |set -x'''.stripMargin())
     }
 }
